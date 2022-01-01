@@ -1,10 +1,9 @@
 var ably = new Ably.Realtime("p7omrg.j5cIZw:PQIh52fSUKb_sRfyiBGXGhNzg-JQE0Fjp2PYMrx56EY");
 var channel = ably.channels.get("general");
 function escape(stuf) {
-	return String(stuf).split("&").join("&amp;").split("<").join("&lt;").split(">").join("&gt;")
+	return String(stuf.data).split("&").join("&amp;").split("<").join("&lt;").split(">").join("&gt;")
 }
 channel.subscribe("stuf", function(message) {
-	alert(message);
 	console.log(message);
 	let thing = document.createElement("div");
 	let user = document.createElement("strong");
