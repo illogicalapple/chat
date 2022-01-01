@@ -1,6 +1,7 @@
 var ably = new Ably.Realtime("p7omrg.j5cIZw:PQIh52fSUKb_sRfyiBGXGhNzg-JQE0Fjp2PYMrx56EY");
 var channel = ably.channels.get("general");
 var name = "Person";
+var notifs = Notification.permission == "granted";
 function escape(stuf) {
 	return String(stuf).split("&").join("&amp;").split("<").join("&lt;").split(">").join("&gt;");
 }
@@ -14,8 +15,25 @@ channel.subscribe("stuf", function(message) {
 	thing.appendChild(user);
 	thing.appendChild(content);
 	document.querySelector("div.messages").appendChild(thing);
+	if(notifs) {
+		let notification = new Notification("New message", {
+			body: user.innerText + content.innerText,
+			icon: "/apple.png"
+		});
+	}
 });
 addEventListener("load", function() {
+	if(!notifs) {
+		Notification.requestPermission().then(function(result) {
+			notifs = result == "granted";
+			if(notifs) {
+				let notification = new Notification("Hi there!", {
+					body: "This is a notification.",
+					icon: "/apple.png"
+				});
+			}
+		});
+	}
 	function enter(event) {
 		if(event.key == "Enter" && document.querySelector("input.chat").value !== "") {
 			channel.publish("stuf", name.replace(":", "") + ":" + document.querySelector("input.chat").value.replace(":", ""));
