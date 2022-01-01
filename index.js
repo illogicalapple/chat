@@ -23,7 +23,7 @@ addEventListener("load", function() {
 		}
 	}
 	function changeName(event) {
-		if(event.key == "Enter" && document.querySelector("input.name").value !== "") {
+		if(document.querySelector("input.name").value !== "") {
 			name = event.target.value;
 		}
 	}
