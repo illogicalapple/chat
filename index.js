@@ -4,6 +4,7 @@ function escape(stuf) {
 	return String(stuf).split("&").join("&amp;").split("<").join("&lt;").split(">").join("&gt;")
 }
 channel.subscribe("stuf", function(message) {
+	alert(message);
 	let thing = document.createElement("div");
 	let user = document.createElement("strong");
 	let content = document.createElement("span");
