@@ -15,7 +15,7 @@ channel.subscribe("stuf", function(message) {
 	thing.appendChild(user);
 	thing.appendChild(content);
 	document.querySelector("div.messages").appendChild(thing);
-	element.scroll({
+	document.querySelector("main").scroll({
 		top: element.scrollHeight,
 		behavior: "smooth"
 	});
