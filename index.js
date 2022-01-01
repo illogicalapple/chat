@@ -17,10 +17,16 @@ channel.subscribe("stuf", function(message) {
 });
 addEventListener("load", function() {
 	function enter(event) {
-		if(event.key == "Enter" && document.querySelector("input").value !== "") {
-			channel.publish("stuf", name.replace(":", "") + ":" + document.querySelector("input").value.replace(":", ""));
-			document.querySelector("input").value = "";
+		if(event.key == "Enter" && document.querySelector("input.chat").value !== "") {
+			channel.publish("stuf", name.replace(":", "") + ":" + document.querySelector("input.chat").value.replace(":", ""));
+			document.querySelector("input.chat").value = "";
 		}
 	}
-	document.querySelector("main input").addEventListener("keydown", enter);
+	function changeName(event) {
+		if(event.key == "Enter" && document.querySelector("input.name").value !== "") {
+			name = event.target.value;
+		}
+	}
+	document.querySelector("main input.chat").addEventListener("keydown", enter);
+	document.querySelector("main input.name").addEventListener("change", changeName);
 });
