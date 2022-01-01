@@ -21,4 +21,3 @@ function enter(event) {
 	}
 }
 document.querySelector("main input").addEventListener("keydown", enter);
-document.querySelector("main button").addEventListener("click", enter);
