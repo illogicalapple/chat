@@ -5,6 +5,7 @@ function escape(stuf) {
 }
 channel.subscribe("stuf", function(message) {
 	alert(message);
+	console.log(message);
 	let thing = document.createElement("div");
 	let user = document.createElement("strong");
 	let content = document.createElement("span");
