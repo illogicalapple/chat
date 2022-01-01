@@ -18,6 +18,7 @@ channel.subscribe("stuf", function(message) {
 function enter(event) {
 	if(event.key == "Enter" && document.querySelector("input").value !== "") {
 		channel.publish("stuf", escape(name).replace(":", "") + ":" + escape(document.querySelector("input").value).replace(":", ""));
+		document.querySelector("input").value = "";
 	}
 }
 document.querySelector("main input").addEventListener("keydown", enter);
