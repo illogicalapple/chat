@@ -23,4 +23,4 @@ addEventListener("load", function() {
 		}
 	}
 	document.querySelector("main input").addEventListener("keydown", enter);
-}
+});
