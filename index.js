@@ -15,7 +15,7 @@ channel.subscribe("stuf", function(message) {
 	thing.appendChild(user);
 	thing.appendChild(content);
 	document.querySelector("div.messages").appendChild(thing);
-	if(notifs && !document.visibilityState) {
+	if(notifs && document.visibilityState !== "visible") {
 		let notification = new Notification("New message", {
 			body: user.innerText + content.innerText,
 			icon: "/apple.png"
