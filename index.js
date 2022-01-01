@@ -15,10 +15,12 @@ channel.subscribe("stuf", function(message) {
 	thing.appendChild(content);
 	document.querySelector("div.messages").appendChild(thing);
 });
-function enter(event) {
-	if(event.key == "Enter" && document.querySelector("input").value !== "") {
-		channel.publish("stuf", escape(name).replace(":", "") + ":" + escape(document.querySelector("input").value).replace(":", ""));
-		document.querySelector("input").value = "";
+addEventListener("load", function() {
+	function enter(event) {
+		if(event.key == "Enter" && document.querySelector("input").value !== "") {
+			channel.publish("stuf", escape(name).replace(":", "") + ":" + escape(document.querySelector("input").value).replace(":", ""));
+			document.querySelector("input").value = "";
+		}
 	}
+	document.querySelector("main input").addEventListener("keydown", enter);
 }
-document.querySelector("main input").addEventListener("keydown", enter);
