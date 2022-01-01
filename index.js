@@ -16,7 +16,7 @@ channel.subscribe("stuf", function(message) {
 	thing.appendChild(content);
 	document.querySelector("div.messages").appendChild(thing);
 	document.querySelector("main").scroll({
-		top: element.scrollHeight,
+		top: document.querySelector("main").scrollHeight,
 		behavior: "smooth"
 	});
 	if(notifs && document.visibilityState !== "visible") {
