@@ -40,7 +40,7 @@ addEventListener("load", function() {
 	}
 	function enter(event) {
 		if(event.key == "Enter" && document.querySelector("input.chat").value !== "") {
-			channel.publish("stuf", name.replace(":", "") + ":" + document.querySelector("input.chat").value.replace(":", ""));
+			channel.publish("stuf", name.replaceAll(":", "") + ":" + document.querySelector("input.chat").value.replaceAll(":", ""));
 			document.querySelector("input.chat").value = "";
 		}
 	}
